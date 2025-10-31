@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BlockAid</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://kit.fontawesome.com/88f767bcd3.js" crossorigin="anonymous"></script>	
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+	<div class="banner">
+		<div class="tabs">
+			<ul class="list-inline">
+				<li class="subtabs">Who we are</li>
+				<li class="subtabs">What we do</li>
+				<li class="subtabs">Our impact</li>
+				<li class="subtabs">Latest</li>
+			</ul>
+		</div>
+		<div class="container">
+			<h1>BlockAid : Every Dollar Tracked, Every Life Changed.</h1>
+			<h2>30% of aid is lost. BlockAid ensures 100% reaches those in need.</h2>
+			<a href="#apply-section" class="btn-gold">Start a transparent project.</a>
+		</div>
+
+	</div>
+
+	<div class="division-grey">
+		<div class="container">
+			<h2>OUR CORE MISSION</h2>
+			<p>
+			Every year, billions of dollars are allocated to tackle global challenges, from poverty and education to healthcare and climate change. Yet, too often, these funds face inefficiencies, lack of transparency, or fail to reach those who need them most. In a world where trust in institutions is fragile and the stakes are higher than ever, the need for efficient, impactful, and trustworthy solutions has never been more urgent.
+			</p>
+			<p>
+			At BlockAid, we believe technology can bridge this gap. By leveraging blockchain and smart contracts, we ensure that every dollar is tracked, every project is accountable, and every impact is measurable. <strong>No more guesswork. No more wasted resources.</strong> Just real results, delivered with transparency and precision.
+			</p>
+			<p>
+			Below, explore how we’re redefining aid : where data meets action, and trust is built into the process.
+			</p>
+			<div class="video-container">
+				<video width="70%" autoplay loop controls>
+					<source src="images/burningtwig.mp4" type="video/mp4">
+				</video>	
+
+
+			</div>
+		</div>	
+	</div>
+	
+
+	<div class="container">
+		<h2>TRACK THE IMPACT</h2>
+
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+		<div class="chart-container"> 
+
+			<div class="chart-wrapper">
+				<canvas id="myChart"></canvas>
+			</div>
+
+			<script>
+				Chart.defaults.backgroundColor = 'rgb(194, 121, 38, 0.8)';
+				const ctx = document.getElementById('myChart').getContext('2d');
+				new Chart(ctx, {
+				    type: 'bar',
+				    data: {
+				      labels: ['South America', 'North Africa', 'Sub-Saharan Africa', 'Middle East', 'Southern Asia', 'Southeast Asia'],
+				      datasets: [{
+				        label: 'Number of Successful Projects Per Region',
+				        data: [4, 10, 19, 16, 7, 11],
+				        borderWidth: 1
+				      }]
+				    },
+				    options: {
+				    	responsive: true,
+				    	plugins: {
+           					title: {
+				                display: true,
+				                text: 'Regional Success Metrics', 
+				                font: {
+				                    size: 25
+				                }
+				            }
+				        },
+				      	scales: {
+				        y: {
+				          beginAtZero: true
+				        }
+				      }
+				    }
+				  });
+			</script>
+
+			<div class="chart-wrapper">
+	        	<canvas id="myChart2"></canvas>
+	    	</div>
+
+			<script>
+			    const ctx2 = document.getElementById('myChart2').getContext('2d');
+			    Chart.defaults.backgroundColor = 'white';
+			    const myChart2 = new Chart(ctx2, {
+			            type: 'line',
+			            data: {
+			                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+			                datasets: [{
+                				label: 'South America', 
+                				data: [12, 31, 84, 61, 26, 27, 32, 26, 49, 57, 51, 65],
+                				borderColor: 'rgba(255, 99, 132, 1)', 
+                				borderWidth: 2,
+               					fill: false 
+				            },
+				            {
+				                label: 'Europe', 
+				                data: [9, 52, 25, 29, 88, 76, 84, 12, 66, 30, 17, 87], 
+				                borderColor: 'rgba(54, 162, 235, 1)', 
+				                borderWidth: 2,
+				                fill: false
+				            },
+				            {
+				                label: 'Asia', 
+				                data: [71, 6, 87, 88, 89, 63, 65, 10, 11, 75, 21, 44], 
+				                borderColor: 'rgba(255, 206, 86, 1)', 
+				                borderWidth: 2,
+				                fill: false
+				            }
+			            ]
+			        },
+			        options: {
+			            responsive: true,
+			            plugins: {
+           					title: {
+				                display: true,
+				                text: 'Threats Blocked by Region (2025)', 
+				                font: {
+				                    size: 25
+				                }
+				            }
+				        },
+			            scales: {
+			                y: {
+			                    beginAtZero: true
+			                }
+			            }
+			        }
+			    });
+			 </script>
+
+	    </div>	
+		
+		<h1>BlockAid Project Locations</h1>
+
+		<div id="map"></div>
+
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+		<script>
+		    const map = L.map('map').setView([20, 0], 2)
+		    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		        }).addTo(map);
+		        const projects = [
+		            { lat: 23.8103, lng: 90.4125, name: "Dhaka, Bangladesh" },
+		            { lat: 12.789585, lng: 45.028504, name: "Aden, Yemen" },
+		            { lat: 4.653382, lng: -74.083633, name: "Bogota, Colombia" },
+		            { lat: 13.20698, lng:  -9.388646, name: "Kita, Mali" },
+		            { lat: -26.103182, lng:  28.089203, name: "Alexandra, South Africa" },
+		            { lat: -1.2921, lng: 36.8219, name: "Nairobi, Kenya" }
+		        ];
+		        projects.forEach(project => {
+		            L.marker([project.lat, project.lng])
+		                .addTo(map)
+		                .bindPopup(`BlockAid Project: ${project.name}`);
+			        });
+		</script>
+
+	</div>
+		
+
+	<div class="division-grey">
+		<div class="container">
+			<h2> BUILT FOR TRUST</h2>
+			<div class="feat-container">
+				<div class="feat-item">
+					<div class="feat-icon"><i class="fa-solid fa-coins"></i></div>
+					<div class="section" data-text="<strong>Turn every donation into a measurable force for change.</strong><br><br>With BlockAid, aid funds are no longer lost in opaque processes or costly intermediaries. We tokenize donations on the blockchain, ensuring every dollar, euro, or cryptocurrency is traceable, secure, and directly allocated to field projects. Our Aid Tokens enable transparent, programmable allocations, so donors know exactly where their contributions go, and beneficiaries receive resources without delay or fraud. By leveraging blockchain, we eliminate misallocation risks, cut administrative costs by 30–50%, and provide instant liquidity for emergencies. Whether you’re an NGO, government, or individual donor, BlockAid helps you maximize the impact of every contribution while providing immutable proof of fund usage. Join the humanitarian revolution : zero waste, zero corruption, 100% accountability.">Tokenize Aid Funds</div>
+				</div>
+				<div class="feat-item">
+					<div class="feat-icon"><i class="fa-solid fa-file-contract"></i></div>
+					<div class="section" data-text="<strong>Trust starts with security.</strong><br><br>At BlockAid, we know that a single vulnerability in a smart contract can jeopardize millions of dollars and your organization’s reputation. Our smart contract audits, conducted by certified experts, identify and fix weaknesses before they become risks. Using advanced tools (like MythX, Slither, and manual reviews), we verify the robustness, efficiency, and compliance of your contracts, whether for fund distribution, voting systems, or transparency mechanisms. With BlockAid, you get:<br><br>
+					- A detailed report with actionable recommendations.<br><br>
+					- A security certification to reassure donors and partners.<br><br>
+					- Post-audit support to ensure safe updates. Don’t let a line of code undermine your mission : secure your projects with audits that meet the highest standards.">Smart Contract Audits</div>
+				</div>
+				<div class="feat-item">
+					<div class="feat-icon"><i class="fa-solid fa-chalkboard"></i></div>
+					<div class="section" data-text="<strong>Track the impact of your donations in real time, from click to delivery.</strong><br><br>Imagine seeing the journey of every donation, from deposit to final use, with unprecedented precision. BlockAid makes this possible with our real-time tracking platform, powered by blockchain. Every transaction, every distribution of food, medicine, or shelter, is recorded and accessible via an intuitive dashboard. Donors see where, when, and how their funds are used, while NGOs gain operational credibility and efficiency. Our system combines:<br><br> 
+					- Geolocated data for on-the-ground tracking.<br><br>
+					- Automatic alerts for anomalies.<br><br>
+					- Instantly generated reports for stakeholders. No more black boxes : with BlockAid, transparency isn’t just a promise, it’s a verifiable reality.">Real-Time Tracking</div>
+				</div>
+				<div class="feat-item">
+					<div class="feat-icon"><i class="fa-solid fa-chart-simple"></i></div>
+					<div class="section" data-text="<strong>Make your project’s impact tangible and inspiring.</strong><br><br>Raw data isn’t enough to engage donors and partners. BlockAid transforms your blockchain data into dynamic, interactive visualization : geolocated maps of distributions, allocation charts, and multimedia stories from beneficiaries. Our tools let you:<br><br>
+					- Create compelling reports for fundraising campaigns.<br><br>
+					- Show project progress in real time (e.g., school constructions, hygiene kit distributions).<br><br>
+					- Engage donors with personalized updates (e.g., “Your donation fed 50 families this month”).<br><br>
+					- With custom dashboards and easy integrations (websites, social media), you bring your projects to life and strengthen donor loyalty. Because an informed donor is a loyal donor, BlockAid helps you tell stories that drive action.">Project Visualization</div>
+				</div>
+			</div>
+
+			<div>
+			
+				<div class="text-display"><strong>Turn every donation into a measurable force for change.</strong><br><br>With BlockAid, aid funds are no longer lost in opaque processes or costly intermediaries. We tokenize donations on the blockchain, ensuring every dollar, euro, or cryptocurrency is traceable, secure, and directly allocated to field projects. Our Aid Tokens enable transparent, programmable allocations, so donors know exactly where their contributions go, and beneficiaries receive resources without delay or fraud. By leveraging blockchain, we eliminate misallocation risks, cut administrative costs by 30–50%, and provide instant liquidity for emergencies. Whether you’re an NGO, government, or individual donor, BlockAid helps you maximize the impact of every contribution while providing immutable proof of fund usage. Join the humanitarian revolution : zero waste, zero corruption, 100% accountability.</div>
+
+		    	<script>
+					const sections = document.querySelectorAll('.section');
+					const textDisplay = document.querySelector('.text-display');
+					sections.forEach(section => {
+					    section.addEventListener('mouseenter', () => {
+					        textDisplay.innerHTML = section.dataset.text;
+					    });
+					});
+		    	</script>
+			</div>
+
+		</div>
+			
+	</div>
+			
+	<div class="container">
+		<div>
+			<h2>MADE FOR CHANGE</h2>
+			<div class="cards">	
+				<div class="card">
+					<img src="images/map.jpg" alt="World help us">
+					<h3>How BlockAid works</h3>
+				</div>
+				<div class="card">
+					<img src="images/donors.jpg" alt="Team">
+					<h3>For NGOs & Donors</h3>
+				</div>
+			</div>	
+			<h3 id="impactstories">DISCOVER OUR IMPACT STORIES</h3>
+			<div class="cards">
+				<div class="card">
+					<img src="images/alisha.jpg" alt="Alisha">
+					<h3>Alisha</h3>
+				</div>
+				<div class="card">
+					<img src="images/razel.jpg" alt="Razel">
+					<h3>Razel</h3>
+				</div>
+				<div class="card">
+					<img src="images/miaandtania.jpg" alt="Mia and Tania">
+					<h3>Mia & Tania</h3>
+				</div>
+			</div>	
+		</div>
+	</div>
+
+		<div id="apply-section">
+			<iframe src="https://form.typeform.com/to/Tfaa5kLE" width="100%" height="500px"frameborder="0"> </iframe>	  
+
+	</div>
+
+	<div> 
+		<hr>
+		<div class="brand-cards">
+			<img src="images/logo.png" id="logo" class="brand-icon">
+			<ul class="list-inline">
+				<li>
+					<a href="#" target="_blank" class="brand-icon">
+						<i class="fa-brands fa-square-facebook"></i>
+					</a>
+				</li>	
+				<li>
+					<a href="#" target="_blank" class="brand-icon">
+						<i class="fa-brands fa-square-linkedin"></i>
+					</a>
+				</li>
+				<li>
+					<a href="#" target="_blank" class="brand-icon">
+						<i class="fa-brands fa-square-instagram"></i>
+					</a>
+				</li>
+				<li>
+					<a href="#" target="_blank" class="brand-icon">
+						<i class="fa-brands fa-square-x-twitter"></i>
+					</a>
+				</li>	
+			</ul>	
+			<a href="#" class="btn-gold" class="brand-icon">Blog</a>
+			<a href="#" class="btn-gold" class="brand-icon">Discover our newsletters.</a>
+			<a href="#" class="btn-gold" class="brand-icon">Join us.</a>
+		</div>
+			
+	</div>
+		
+
+					
+	</div>
+
+
+
+</body>
+</html>
+ 

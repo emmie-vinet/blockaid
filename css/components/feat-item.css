@@ -1,0 +1,42 @@
+.feat-container{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+	flex-wrap: wrap;
+	padding: 5px;
+}
+
+.feat-item{
+	flex-grow: 1;
+	min-width: 200px;
+	margin: 10px;
+}
+
+.feat-item:hover{
+	font-weight: bold;
+	.feat-icon{
+		color: #ed8713;
+		transform: scale(1.1);
+	}
+}
+
+.feat-icon{
+	font-size: 100px;
+	margin-bottom: 10px;
+	color: #C27926;
+}
+
+.section {
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.text-display {
+    margin-top: 30px;
+    text-align: left;
+    justify-content: center;
+}     
+
+

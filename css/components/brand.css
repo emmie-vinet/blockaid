@@ -1,0 +1,22 @@
+.brand-cards{
+	display: flex;
+	flex-wrap: no-wrap;
+	justify-content: space-between;
+	align-items: center;
+	width: 98%;
+}
+
+
+.brand-icon{
+	color: #C27926;
+	font-size: 60px;
+	flex: 0 0 auto;
+	text-align: center;
+}
+
+.brand-icon:hover{
+	color: #ed8713;
+	transform: scale(1.1);
+}
+
+

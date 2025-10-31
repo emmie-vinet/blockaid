@@ -1,0 +1,26 @@
+.list-inline{
+	list-style: none;
+	padding-left: 0px;
+	margin-right: 40px;
+}
+.list-inline li{
+	display: inline;
+	padding: 20px;
+}
+
+.tabs{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-wrap: nowrap;
+	font-size: 23px;
+	text-emphasis: black;
+	text-shadow: 2px 2px 2px black;
+	font-family: "Roboto", sans-serif;
+}
+
+
+.subtabs:hover{
+	font-weight: bold;
+}
+
